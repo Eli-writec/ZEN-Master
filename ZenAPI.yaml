@@ -1,0 +1,6551 @@
+---
+swagger: "2.0"
+info:
+  description: "Zixi Zen API\n"
+  version: "1.0.0"
+  title: "Zixi Zen"
+host: "api.staging.devcloud.zixi.com"
+basePath: "/v2/staging"
+schemes:
+- "https"
+paths:
+  /access_keys:
+    get:
+      operationId: "listAccessKeys"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AccessKeysReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createAccessKey"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewAccessKey"
+        required: true
+        schema:
+          $ref: "#/definitions/NewAccessKey"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AccessKeyReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /access_keys/{accessKeyId}:
+    get:
+      operationId: "getAccessKey"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "accessKeyId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AccessKeyReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateAccessKey"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "accessKeyId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateAccessKey"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateAccessKey"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AccessKeyReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteAccessKey"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "accessKeyId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /aws_accounts:
+    get:
+      operationId: "listAwsAccounts"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AwsAccountsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /broadcasters:
+    get:
+      operationId: "listBroadcasters"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/BroadcastersReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createBroadcaster"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewBroadcaster"
+        required: true
+        schema:
+          $ref: "#/definitions/NewBroadcaster"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/BroadcasterReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /broadcasters/{broadcasterId}:
+    get:
+      operationId: "getBroadcaster"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "broadcasterId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/BroadcasterReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateBroadcaster"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "broadcasterId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "UpdateBroadcaster"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateBroadcaster"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/BroadcasterReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteBroadcaster"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "broadcasterId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /broadcasters/{broadcasterId}/stats:
+    get:
+      operationId: "getBroadcasterStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "broadcasterId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /channels/adaptive:
+    get:
+      operationId: "listAdaptiveChannels"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AdaptiveChannelsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createAdaptiveChannel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewAdaptiveChannel"
+        required: true
+        schema:
+          $ref: "#/definitions/NewAdaptiveChannel"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AdaptiveChannelReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /channels/adaptive/{channelId}:
+    get:
+      operationId: "getAdaptiveChannel"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "channelId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AdaptiveChannelReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateAdaptiveChannel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "channelId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateAdaptiveChannel"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateAdaptiveChannel"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AdaptiveChannelReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteAdaptiveChannel"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "channelId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /channels/passthrough:
+    get:
+      operationId: "listPassThroughChannels"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PassThroughChannelsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createPassThroughChannel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewPassThroughChannel"
+        required: true
+        schema:
+          $ref: "#/definitions/NewPassThroughChannel"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PassThroughChannelReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /channels/passthrough/{channelId}:
+    get:
+      operationId: "getPassThroughChannel"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "channelId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PassThroughChannelReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updatePassThroughChannel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "channelId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdatePassThroughChannel"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdatePassThroughChannel"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PassThroughChannelReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deletePassThroughChannel"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "channelId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /clusters:
+    get:
+      operationId: "listClusters"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ClustersReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createCluster"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewCluster"
+        required: true
+        schema:
+          $ref: "#/definitions/NewCluster"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ClusterReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /clusters/{clusterId}:
+    get:
+      operationId: "getCluster"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "clusterId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ClusterReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateCluster"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "clusterId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateCluster"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateCluster"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ClusterReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteCluster"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "clusterId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /events:
+    get:
+      operationId: "listEvents"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "broadcaster"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "http_target"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "msgType"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pull_target"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "cluster"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "receiver"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "source"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "passthrough_channel"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "objectType"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "feeder"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "adaptive_channel"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "license"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "offset"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "udp_rtp"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "remote_access"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "push_target"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "rtmp_target"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/EventsReply"
+      security:
+      - api_key: []
+  /feeders:
+    get:
+      operationId: "listFeeders"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/FeedersReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createFeeder"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewFeeder"
+        required: true
+        schema:
+          $ref: "#/definitions/NewFeeder"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/FeederReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /feeders/{feederId}:
+    get:
+      operationId: "getFeeder"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "feederId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/FeederReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateFeeder"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "feederId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "UpdateFeeder"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateFeeder"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/FeederReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteFeeder"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "feederId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /feeders/{feederId}/stats:
+    get:
+      operationId: "getFeederStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "feederId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /gcp_accounts:
+    get:
+      operationId: "GcpAccounts"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/GcpAccountsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /groups:
+    get:
+      operationId: "listGroups"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/GroupsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewGroup"
+        required: true
+        schema:
+          $ref: "#/definitions/NewGroup"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/GroupReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /groups/{groupId}:
+    get:
+      operationId: "getGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "groupId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/GroupReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "groupId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateGroup"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateGroup"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/GroupReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "groupId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /receivers:
+    get:
+      operationId: "listReceivers"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ReceiversReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createReceiver"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewReceiver"
+        required: true
+        schema:
+          $ref: "#/definitions/NewReceiver"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ReceiverReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /receivers/{receiverId}:
+    get:
+      operationId: "getReceiver"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "receiverId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ReceiverReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateReceiver"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "receiverId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateReceiver"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateReceiver"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ReceiverReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteReceiver"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "receiverId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /receivers/{receiverId}/stats:
+    get:
+      operationId: "getReceiverStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "receiverId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /remote_access:
+    get:
+      operationId: "listRemoteAccess"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RemoteAccessesReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createRemoteAccess"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewRemoteAccess"
+        required: true
+        schema:
+          $ref: "#/definitions/NewRemoteAccess"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RemoteAccessReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /remote_access/{remoteAccessId}:
+    get:
+      operationId: "getRemoteAccess"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "remoteAccessId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RemoteAccessReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateRemoteAccess"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "remoteAccessId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateRemoteAccess"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateRemoteAccess"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RemoteAccessReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteRemoteAccess"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "remoteAccessId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /resource_tags:
+    get:
+      operationId: "listAccessTags"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "roleId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/TagsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /roles:
+    get:
+      operationId: "listRoles"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RolesReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createRole"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewRole"
+        required: true
+        schema:
+          $ref: "#/definitions/NewRole"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RoleReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /roles/{roleId}:
+    get:
+      operationId: "getRole"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "roleId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RoleReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateRole"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "roleId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "UpdateRole"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateRole"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RoleReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteRole"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "roleId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /sources:
+    get:
+      operationId: "listSources"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "summary"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SourcesReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewSource"
+        required: true
+        schema:
+          $ref: "#/definitions/NewSource"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SourceReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /sources/{sourceId}:
+    get:
+      operationId: "getSource"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "sourceId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SourceReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "sourceId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "UpdateSource"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateSource"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SourceReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteSource"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "sourceId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /sources/{sourceId}/preview.jpg:
+    get:
+      operationId: "getSourcePreview"
+      produces:
+      - "image/jpeg"
+      parameters:
+      - name: "sourceId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Content-Type:
+              type: "string"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /sources/{sourceId}/stats:
+    get:
+      operationId: "getSourceStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "sourceId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /tags:
+    get:
+      operationId: "listTags"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/TagsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createTag"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewTag"
+        required: true
+        schema:
+          $ref: "#/definitions/NewTag"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/TagReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /tags/{tagId}:
+    get:
+      operationId: "getTag"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "tagId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/TagReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateTag"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "tagId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateTag"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateTag"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/TagReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteTag"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "tagId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/http:
+    get:
+      operationId: "listHttpTargets"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/HttpTargetsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createHttpTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewHttpTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/NewHttpTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/HttpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/http/{targetId}:
+    get:
+      operationId: "getHttpTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/HttpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateHttpTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateHttpTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateHttpTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/HttpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteHttpTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/http/{targetId}/stats:
+    get:
+      operationId: "getHttpTargetStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/ndi:
+    get:
+      operationId: "listNdiTargets"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/NdiTargetsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createNdiTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewNdiTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/NewNdiTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/NdiTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/ndi/{targetId}:
+    get:
+      operationId: "getNdiTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/NdiTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateNdiTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateNdiTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateNdiTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/NdiTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteNdiTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/ndi/{targetId}/stats:
+    get:
+      operationId: "getNdiTargetStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/pull:
+    get:
+      operationId: "listPullTargets"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PullTargetsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createPullTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewPullTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/NewPullTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PullTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/pull/{targetId}:
+    get:
+      operationId: "getPullTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PullTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updatePullTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdatePullTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdatePullTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PullTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deletePullTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/pull/{targetId}/stats:
+    get:
+      operationId: "getPullTargetStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/push:
+    get:
+      operationId: "listPushTargets"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PushTargetsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createPushTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewPushTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/NewPushTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PushTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/push/{targetId}:
+    get:
+      operationId: "getPushTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PushTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updatePushTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdatePushTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdatePushTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PushTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deletePushTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/push/{targetId}/stats:
+    get:
+      operationId: "getPushTargetStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/rtmp:
+    get:
+      operationId: "listRtmpTargets"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RtmpTargetsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createRtmpTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewRtmpTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/NewRtmpTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RtmpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/rtmp/{targetId}:
+    get:
+      operationId: "getRtmpTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RtmpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateRtmpTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateRtmpTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateRtmpTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/RtmpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteRtmpTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/rtmp/{targetId}/stats:
+    get:
+      operationId: "getRtmpTargetStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/udp_rtp:
+    get:
+      operationId: "listUdpRtpTargets"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UdpRtpTargetsReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createUdpRtpTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewUdpRtpTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/NewUdpRtpTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UdpRtpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/udp_rtp/{targetId}:
+    get:
+      operationId: "getUdpRtpTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UdpRtpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateUdpRtpTarget"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateUdpRtpTarget"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateUdpRtpTarget"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UdpRtpTargetReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteUdpRtpTarget"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /targets/udp_rtp/{targetId}/stats:
+    get:
+      operationId: "getUdpRtpTargetStats"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "targetId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "from"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "interval"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "to"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/StatisticsReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /users:
+    get:
+      operationId: "listUsers"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UsersReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    post:
+      operationId: "createUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "NewUser"
+        required: true
+        schema:
+          $ref: "#/definitions/NewUser"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UserReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+  /users/{userId}:
+    get:
+      operationId: "getUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UserReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    put:
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "UpdateUser"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateUser"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/UserReply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+    delete:
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Reply"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorReply"
+      security:
+      - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  RtmpTargetsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/RtmpTarget"
+  TagReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Tag"
+  UpdateBroadcaster:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      api_user:
+        type: "string"
+      api_password:
+        type: "string"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+      private_ip:
+        type: "string"
+      streaming_ip:
+        type: "string"
+      standby:
+        type: "boolean"
+  BroadcastersReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Broadcaster"
+  UpdateReceiver:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      api_user:
+        type: "string"
+      api_password:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+  PassThroughChannelsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/PassThroughChannel"
+  AdaptiveBitrate:
+    type: "object"
+    required:
+    - "kbps"
+    - "name"
+    - "source_id"
+    properties:
+      source_id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      kbps:
+        type: "integer"
+  NewSource:
+    type: "object"
+    required:
+    - "broadcaster_cluster_id"
+    - "latency"
+    - "max_bitrate"
+    - "name"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      broadcaster_cluster_id:
+        type: "integer"
+        format: "int64"
+      target_broadcaster_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a specific broadcaster to target in the cluster, or -1/-2/-3\
+          \ for prefering primary, primary only, or backup only when supported"
+      feeder_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the specific Feeder that will be configured to push this\
+          \ source (set to null otherwise)"
+      broadcaster_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the specific Broadcaster that will be configured to push\
+          \ this source (set to null otherwise)"
+      input_id:
+        type: "string"
+      protocol:
+        type: "string"
+        description: "Protocol ID for UDP/RTP, RIST, SRT sources. One of \"udp\",\
+          \ \"rtp\", \"rist\", \"srt\""
+      multicast_address:
+        type: "string"
+        description: "Multiucast address for UDP/RTP sources"
+      multicast_source:
+        type: "string"
+        description: "Source Specific Multicast IP address for multicast sources"
+      listening_port:
+        type: "integer"
+        description: "UDP Port for UDP/RTP sources"
+      input_nic:
+        type: "string"
+        description: "IP address of a broadcaster NIC (only supported in UDP sources)"
+      hitless_failover_source_ids:
+        type: "array"
+        description: "ID of sources that will be combined into a single Hitless Failover\
+          \ source"
+        items:
+          type: "integer"
+          format: "int64"
+      source_id:
+        type: "integer"
+        format: "int64"
+        description: "Inter-Cluster Source - ID of the source that will be pulled\
+          \ by the target cluster"
+      use_private_ip:
+        type: "boolean"
+        description: "Inter-Cluster Source - Set to true to pull the Source on the\
+          \ broadcaster's private IP address"
+      aws_account_id:
+        type: "integer"
+        format: "int64"
+        description: "AWS MediaConnect Source - ID of AWS account in Zen"
+      mediaconnect_flow_arn:
+        type: "string"
+        description: "AWS MediaConnect Source - Flow ARN"
+      region:
+        type: "string"
+        description: "AWS MediaConnect Source - AWS region code"
+      max_bitrate:
+        type: "integer"
+      latency:
+        type: "integer"
+      monitor_pids_change:
+        type: "boolean"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      password:
+        type: "string"
+      encryption:
+        type: "string"
+        enum:
+        - "auto"
+        - "none"
+      allow_outputs:
+        type: "boolean"
+      outputs_password:
+        type: "string"
+      monitor_only:
+        type: "boolean"
+      socket_buffer:
+        type: "integer"
+        format: "int64"
+        description: "Controls the socket size allocated for managed inputs (Zixi\
+          \ Pull, Inter-Cluster) [bytes]"
+      disable_autopull:
+        type: "boolean"
+        description: "Locks Channels and Targets to the current active broadcaster\
+          \ for this Source"
+      autopull_latency:
+        type: "integer"
+      webrtc_mode:
+        type: "string"
+        description: "One of 'passthrough', 'auto', '1080p', '720p', '480p', '360p'\
+          \ or blank to disable"
+      audio_ref_level:
+        type: "integer"
+        description: "Adjust audio reference level for NDI Sources [dB]"
+      process_scte_reports:
+        type: "boolean"
+        description: "Controls whether SCTE messages reported by the broadcaster are\
+          \ parsed into ZM SCTE logs"
+      report_scte_warnings:
+        type: "boolean"
+        description: "Controls whether ZM will alert on missing or duplicate SCTE\
+          \ messages (requires process_scte_reports)"
+  HttpTarget:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        is_enabled:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "disabled"
+        adaptive_channel_id:
+          type: "integer"
+          format: "int64"
+        aws_access_key_id:
+          type: "string"
+        aws_region:
+          type: "string"
+        gcp_account_id:
+          type: "integer"
+          format: "int64"
+        ingest_url:
+          type: "string"
+        playback_url:
+          type: "string"
+        delete_outdated:
+          type: "boolean"
+        ignore_certificate:
+          type: "boolean"
+        resource_tag_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+  RemoteAccess:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - $ref: "#/definitions/TunnelledObject"
+    - type: "object"
+      properties:
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "pending"
+          - "disabled"
+        is_enabled:
+          type: "boolean"
+        resourceTags:
+          type: "array"
+          items:
+            $ref: "#/definitions/Tag"
+        state:
+          type: "string"
+          enum:
+          - "pending"
+          - "active"
+          - "disabled"
+        status:
+          type: "object"
+          description: "Live status of the Remote Access"
+          properties:
+            source_ip:
+              type: "string"
+              description: "Remote Access IP address (remote IP address from the remote\
+                \ access Tunnel)"
+  Broadcaster:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/TunnelledObject"
+    - type: "object"
+      properties:
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "pending"
+          - "disabled"
+        is_enabled:
+          type: "boolean"
+        state:
+          type: "string"
+          enum:
+          - "pending"
+          - "active"
+          - "disabled"
+        standby:
+          type: "boolean"
+        status:
+          type: "object"
+          description: "Live status of the Broadcaster"
+          properties:
+            cpu:
+              type: "number"
+              format: "double"
+            ram:
+              type: "number"
+              format: "double"
+            source_ip:
+              type: "string"
+              description: "Broadcaster IP address (remote IP address from the Broadcaster\
+                \ Tunnel)"
+            inputs:
+              type: "array"
+              items:
+                $ref: "#/definitions/BroadcasterInput"
+            outputs:
+              type: "array"
+              items:
+                $ref: "#/definitions/BroadcasterOutput"
+        private_ip:
+          type: "string"
+        streaming_ip:
+          type: "string"
+  NewTag:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+  UpdateSource:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      broadcaster_cluster_id:
+        type: "integer"
+        format: "int64"
+      target_broadcaster_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a specific broadcaster to target in the cluster, or -1/-2/-3\
+          \ for prefering primary, primary only, or backup only when supported"
+      feeder_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the specific Feeder that will be configured to push this\
+          \ source (set to null otherwise)"
+      broadcaster_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the specific Broadcaster that will be configured to push\
+          \ this source (set to null otherwise)"
+      input_id:
+        type: "string"
+      protocol:
+        type: "string"
+        description: "Protocol ID for UDP/RTP, RIST, SRT sources. One of \"udp\",\
+          \ \"rtp\", \"rist\", \"srt\""
+      multicast_address:
+        type: "string"
+        description: "Multiucast address for UDP/RTP sources"
+      multicast_source:
+        type: "string"
+        description: "Source Specific Multicast IP address for multicast sources"
+      listening_port:
+        type: "integer"
+        description: "UDP Port for UDP/RTP sources"
+      input_nic:
+        type: "string"
+        description: "IP address of a broadcaster NIC (only supported in UDP sources)"
+      hitless_failover_source_ids:
+        type: "array"
+        description: "ID of sources that will be combined into a single Hitless Failover\
+          \ source"
+        items:
+          type: "integer"
+          format: "int64"
+      source_id:
+        type: "integer"
+        format: "int64"
+        description: "Inter-Cluster Source - ID of the source that will be pulled\
+          \ by the target cluster"
+      use_private_ip:
+        type: "boolean"
+        description: "Inter-Cluster Source - Set to true to pull the Source on the\
+          \ broadcaster's private IP address"
+      aws_account_id:
+        type: "integer"
+        format: "int64"
+        description: "AWS MediaConnect Source - ID of AWS account in Zen"
+      mediaconnect_flow_arn:
+        type: "string"
+        description: "AWS MediaConnect Source - Flow ARN"
+      region:
+        type: "string"
+        description: "AWS MediaConnect Source - AWS region code"
+      max_bitrate:
+        type: "integer"
+      latency:
+        type: "integer"
+      monitor_pids_change:
+        type: "boolean"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      password:
+        type: "string"
+      encryption:
+        type: "string"
+        enum:
+        - "auto"
+        - "none"
+      allow_outputs:
+        type: "boolean"
+      outputs_password:
+        type: "string"
+      monitor_only:
+        type: "boolean"
+      socket_buffer:
+        type: "integer"
+        format: "int64"
+        description: "Controls the socket size allocated for managed inputs (Zixi\
+          \ Pull, Inter-Cluster) [bytes]"
+      disable_autopull:
+        type: "boolean"
+        description: "Locks Channels and Targets to the current active broadcaster\
+          \ for this Source"
+      autopull_latency:
+        type: "integer"
+      webrtc_mode:
+        type: "string"
+        description: "One of 'passthrough', 'auto', '1080p', '720p', '480p', '360p'\
+          \ or blank to disable"
+      audio_ref_level:
+        type: "integer"
+        description: "Adjust audio reference level for NDI Sources [dB]"
+      process_scte_reports:
+        type: "boolean"
+        description: "Controls whether SCTE messages reported by the broadcaster are\
+          \ parsed into ZM SCTE logs"
+      report_scte_warnings:
+        type: "boolean"
+        description: "Controls whether ZM will alert on missing or duplicate SCTE\
+          \ messages (requires process_scte_reports)"
+  AdaptiveChannelReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/AdaptiveChannel"
+  NewRole:
+    type: "object"
+    required:
+    - "name"
+    - "resource_tag_id"
+    properties:
+      name:
+        type: "string"
+      resource_tag_id:
+        type: "integer"
+        format: "int64"
+      adaptive_edit:
+        type: "boolean"
+      adaptive_notify:
+        type: "boolean"
+      adaptive_view:
+        type: "boolean"
+      clusters_edit:
+        type: "boolean"
+      clusters_notify:
+        type: "boolean"
+      clusters_view:
+        type: "boolean"
+      delivery_edit:
+        type: "boolean"
+      delivery_notify:
+        type: "boolean"
+      delivery_view:
+        type: "boolean"
+      reports_edit:
+        type: "boolean"
+      reports_view:
+        type: "boolean"
+      source_edit:
+        type: "boolean"
+      source_notify:
+        type: "boolean"
+      source_view:
+        type: "boolean"
+      user_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      group_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  PassThroughChannel:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        source_id:
+          type: "integer"
+          format: "int64"
+        alt_source_id:
+          type: "integer"
+          format: "int64"
+        broadcaster_cluster_id:
+          type: "integer"
+          format: "int64"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "disabled"
+        is_enabled:
+          type: "boolean"
+        pull_target_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+        push_target_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+        rtmp_target_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+        resourceTags:
+          type: "array"
+          items:
+            $ref: "#/definitions/Tag"
+        targetsSummary:
+          type: "object"
+          properties:
+            bad:
+              type: "integer"
+            disabled:
+              type: "integer"
+            good:
+              type: "integer"
+            muted_bad:
+              type: "integer"
+  NewRemoteAccess:
+    type: "object"
+    required:
+    - "name"
+    - "remote_access_key_id"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+  UpdateAccessKey:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  UpdatePushTarget:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      target:
+        type: "string"
+        description: "Zixi broadcaster host and port e.g. my.zixi.server.com[:2088]"
+      alt_target:
+        type: "string"
+        description: "Alternative Zixi broadcaster host and port e.g. my.zixi.server.com[:2088]"
+      stream_id:
+        type: "string"
+        description: "Stream ID that the remote broadcaster is configured to accept\
+          \ for this Target"
+      password:
+        type: "string"
+      latency:
+        type: "integer"
+      zixi_encryption_key:
+        type: "string"
+        description: "Hexadecimal string of length 32, 48 or 64 characters (Not supported\
+          \ for AWS MediaConnect Target mode)"
+      ignore_dtls_cert:
+        type: "boolean"
+      aws_account_id:
+        type: "integer"
+        format: "int64"
+        description: "AWS MediaConnect Target - ID of AWS account in Zen"
+      mediaconnect_flow_arn:
+        type: "string"
+        description: "AWS MediaConnect Target - Flow ARN"
+      region:
+        type: "string"
+        description: "AWS MediaConnect Target - AWS region code"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  FeedersReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Feeder"
+  FeederReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Feeder"
+  GroupsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Group"
+  AwsAccount:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+  NewUdpRtpTarget:
+    type: "object"
+    required:
+    - "host"
+    - "name"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      host:
+        type: "string"
+        description: "Host or IP of the target device"
+      rtp:
+        type: "boolean"
+        description: "Boolean marking RTP over UDP"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  NewGroup:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      role_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      user_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  Group:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      roles:
+        type: "array"
+        items:
+          $ref: "#/definitions/Role"
+      users:
+        type: "array"
+        items:
+          $ref: "#/definitions/User"
+  UdpRtpTargetsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/UdpRtpTarget"
+  GroupReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Group"
+  RoleReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Role"
+  UserReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/User"
+  ClusterReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Cluster"
+  BroadcasterVersion:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      version:
+        type: "string"
+  UpdatePullTarget:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      receiver_name:
+        type: "string"
+        description: "ID of a Zixi Recevier or Zixi enabled IRD (Required for 'Other'\
+          \ Pull outputs)"
+      receiver_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Zixi Receiver object"
+      broadcaster_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Zixi Receiver object"
+      output_id:
+        type: "string"
+        description: "ID of a Receiver or Broadcaster output"
+      password:
+        type: "string"
+      latency:
+        type: "integer"
+      zixi_encryption_key:
+        type: "string"
+        description: "Hexadecimal string of length 32, 48 or 64 characters"
+      use_private_ip:
+        type: "boolean"
+      zixi_pull_parent_id:
+        type: "integer"
+        description: "Set to Null to convert a dynamic child target into a regular\
+          \ one"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  NewPullTarget:
+    type: "object"
+    required:
+    - "name"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      stream_id:
+        type: "string"
+        description: "Optionally override the generated stream_id, must be globally\
+          \ unique"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      receiver_name:
+        type: "string"
+        description: "ID of a Zixi Recevier or Zixi enabled IRD (Required for 'Other'\
+          \ Pull outputs)"
+      receiver_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Zixi Receiver object"
+      broadcaster_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Zixi Receiver object"
+      output_id:
+        type: "string"
+        description: "ID of a Receiver or Broadcaster output"
+      password:
+        type: "string"
+      latency:
+        type: "integer"
+      zixi_encryption_key:
+        type: "string"
+        description: "Hexadecimal string of length 32, 48 or 64 characters"
+      use_private_ip:
+        type: "boolean"
+      dynamic_targets:
+        type: "boolean"
+        description: "Enable dynamic mode on the Target to allow connecting multiple\
+          \ Receivers to the same ZM Target"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  AccessKey:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      rsa_private:
+        type: "string"
+      resourceTags:
+        type: "array"
+        items:
+          $ref: "#/definitions/Tag"
+  HttpTargetsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/HttpTarget"
+  PushTargetReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/PushTarget"
+  UpdateRemoteAccess:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+  NewPassThroughChannel:
+    type: "object"
+    required:
+    - "broadcaster_cluster_id"
+    - "name"
+    - "resource_tag_ids"
+    - "source_id"
+    properties:
+      name:
+        type: "string"
+      source_id:
+        type: "integer"
+        format: "int64"
+      alt_source_id:
+        type: "integer"
+        format: "int64"
+      broadcaster_cluster_id:
+        type: "integer"
+        format: "int64"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  NewUser:
+    type: "object"
+    required:
+    - "email"
+    - "name"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      is_admin:
+        type: "boolean"
+      is_enabled:
+        type: "boolean"
+      must_reset:
+        type: "boolean"
+        description: "Only for non-SSO Users"
+      password:
+        type: "string"
+        description: "Required for non-SSO Users"
+      sso_id:
+        type: "string"
+        description: "Must be equal to 'Pending' when creating an SSO User"
+      role_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      group_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  PushTargetsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/PushTarget"
+  UdpRtpTargetReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/UdpRtpTarget"
+  NewBroadcaster:
+    type: "object"
+    required:
+    - "api_password"
+    - "api_user"
+    - "broadcaster_cluster_id"
+    - "name"
+    - "remote_access_key_id"
+    properties:
+      name:
+        type: "string"
+      api_user:
+        type: "string"
+      api_password:
+        type: "string"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+      broadcaster_cluster_id:
+        type: "integer"
+        format: "int64"
+      private_ip:
+        type: "string"
+      streaming_ip:
+        type: "string"
+      standby:
+        type: "boolean"
+  NewAccessKey:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  NewCluster:
+    type: "object"
+    required:
+    - "auth_mode"
+    - "can_input"
+    - "can_process"
+    - "dns_prefix"
+    - "name"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      dns_prefix:
+        type: "string"
+      can_input:
+        type: "boolean"
+      can_process:
+        type: "boolean"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      auth_mode:
+        type: "string"
+        enum:
+        - "zen"
+        - "custom"
+        - "ffa"
+      allow_unmanaged_inputs:
+        type: "boolean"
+        default: false
+      allow_unmanaged_outputs:
+        type: "boolean"
+        default: false
+      aws_account_id:
+        type: "integer"
+        format: "int64"
+      api_user:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      api_password:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      activation_key:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      zcp_version_id:
+        type: "integer"
+        format: "int64"
+        description: "Only for AWS/GCP/Azure clusters"
+      zcp_version_name:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      vpc:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      region:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      subnet:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      key_pair:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      security_group:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+      primary_size:
+        type: "integer"
+        description: "Only for AWS/GCP/Azure clusters"
+      backup_size:
+        type: "integer"
+        description: "Only for AWS/GCP/Azure clusters"
+      instance_type:
+        type: "string"
+        description: "Only for AWS/GCP/Azure clusters"
+  TagsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Tag"
+  PullTarget:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        is_enabled:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "pending"
+          - "disabled'"
+        passthrough_channel_id:
+          type: "integer"
+          format: "int64"
+        receiver_name:
+          type: "string"
+          description: "ID of a Zixi Recevier or Zixi enabled IRD (Required for 'Other'\
+            \ Pull outputs)"
+        receiver_id:
+          type: "integer"
+          format: "int64"
+          description: "ID of a Zixi Receiver object"
+        broadcaster_id:
+          type: "integer"
+          format: "int64"
+          description: "ID of a Zixi Receiver object"
+        output_id:
+          type: "string"
+          description: "ID of a Receiver or Broadcaster output"
+        password:
+          type: "string"
+        latency:
+          type: "integer"
+        zixi_encryption_key:
+          type: "string"
+          description: "Hexadecimal string of length 32, 48 or 64 characters"
+        use_private_ip:
+          type: "boolean"
+        stream_id:
+          type: "string"
+          description: "Actual Stream ID the receiver needs to pull in order to connect\
+            \ to the target"
+        source_host:
+          type: "string"
+          description: "Host name the receiver needs to pull from in order to connect\
+            \ to the target"
+        zixi_pull_parent_id:
+          type: "integer"
+          description: "ID of the Dynamic Target that created this child Target"
+        dynamic_targets:
+          type: "boolean"
+          description: "Dynamic mode on the Target allows connecting multiple Receivers\
+            \ to the same ZM Target"
+        resource_tag_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+  UpdateRtmpTarget:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      target:
+        type: "string"
+        description: "RTMP URL e.g. rtmp://my.rtmp.server.com/live"
+      alt_target:
+        type: "string"
+        description: "Alternative RTMP URL e.g. rtmp://my.backup.rtmp.server.com/live"
+      stream_name:
+        type: "string"
+        description: "RTMP stream name"
+      username:
+        type: "string"
+      password:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  NewAdaptiveChannel:
+    type: "object"
+    required:
+    - "bitrates"
+    - "broadcaster_cluster_id"
+    - "name"
+    - "resource_tag_ids"
+    properties:
+      bitrates:
+        type: "array"
+        items:
+          $ref: "#/definitions/AdaptiveBitrate"
+      name:
+        type: "string"
+      broadcaster_cluster_id:
+        type: "integer"
+        format: "int64"
+      log_scte:
+        type: "boolean"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  RtmpTarget:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        is_enabled:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "disabled'"
+        passthrough_channel_id:
+          type: "integer"
+          format: "int64"
+        target:
+          type: "string"
+        alt_target:
+          type: "string"
+        stream_name:
+          type: "string"
+        username:
+          type: "string"
+        password:
+          type: "string"
+        resource_tag_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+  Tunnel:
+    type: "object"
+    properties:
+      tunnel_server:
+        $ref: "#/definitions/TunnelServer"
+      port:
+        type: "integer"
+        format: "int16"
+  UpdateUdpRtpTarget:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      host:
+        type: "string"
+        description: "Host or IP of the target device"
+      rtp:
+        type: "boolean"
+        description: "Boolean marking RTP over UDP"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  ErrorReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+  NdiTargetsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/NdiTarget"
+  NewHttpTarget:
+    type: "object"
+    required:
+    - "ingest_url"
+    - "name"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      adaptive_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of an Adaptive Channel object"
+      aws_access_key_id:
+        type: "string"
+        description: "AWS Access Key ID (Required for AWS S3 targets)"
+      aws_secret_key:
+        type: "string"
+        description: "AWS Secret Key (Required for AWS S3 targets)"
+      aws_region:
+        type: "string"
+        description: "AWS Region where the bucket is located, e.g. us-east-1 (Required\
+          \ for AWS S3 targets)"
+      gcp_account_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a GCP Account object (Required for GCP targets)"
+      ingest_url:
+        type: "string"
+      playback_url:
+        type: "string"
+      delete_outdated:
+        type: "boolean"
+        description: "Delete chunks once they expire from the live playlist"
+      ignore_certificate:
+        type: "boolean"
+        description: "Ignore TLS certificate validation errors when pushing to an\
+          \ HTTPS target"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  Event:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      event_date:
+        type: "string"
+        format: "date-time"
+      event_type:
+        type: "string"
+      short_message:
+        type: "string"
+      message:
+        type: "string"
+      error_code:
+        type: "string"
+      error_group:
+        type: "string"
+      object_id:
+        type: "integer"
+      object_type:
+        type: "string"
+  Reply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+  BroadcasterInput:
+    type: "object"
+    properties:
+      bitrate:
+        type: "integer"
+        format: "int32"
+      error:
+        type: "string"
+      id:
+        type: "string"
+  UpdateUser:
+    type: "object"
+    properties:
+      is_admin:
+        type: "boolean"
+      is_enabled:
+        type: "boolean"
+      must_reset:
+        type: "boolean"
+        description: "Only for non-SSO Users"
+      password:
+        type: "string"
+        description: "Only for non-SSO Users"
+      role_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      group_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  Tag:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+  ReceiverReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Receiver"
+  PassThroughChannelReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/PassThroughChannel"
+  NewFeeder:
+    type: "object"
+    required:
+    - "api_password"
+    - "api_user"
+    - "name"
+    - "remote_access_key_id"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      api_user:
+        type: "string"
+      api_password:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+  RemoteAccessReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/RemoteAccess"
+  UpdateAdaptiveChannel:
+    type: "object"
+    properties:
+      bitrates:
+        type: "array"
+        items:
+          $ref: "#/definitions/AdaptiveBitrate"
+      name:
+        type: "string"
+      broadcaster_cluster_id:
+        type: "integer"
+        format: "int64"
+      log_scte:
+        type: "boolean"
+      is_enabled:
+        type: "boolean"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  NdiTargetReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/NdiTarget"
+  StatisticsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            columns:
+              type: "array"
+              items:
+                type: "string"
+            values:
+              type: "array"
+              items:
+                type: "array"
+                items:
+                  type: "number"
+  UsersReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/User"
+  AdaptiveChannel:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        bitrates:
+          type: "array"
+          items:
+            $ref: "#/definitions/AdaptiveBitrate"
+        broadcaster_cluster_id:
+          type: "integer"
+          format: "int64"
+        log_scte:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "disabled"
+        is_enabled:
+          type: "boolean"
+        http_target_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+        resourceTags:
+          type: "array"
+          items:
+            $ref: "#/definitions/Tag"
+        targetsSummary:
+          type: "object"
+          properties:
+            bad:
+              type: "integer"
+            disabled:
+              type: "integer"
+            good:
+              type: "integer"
+            muted_bad:
+              type: "integer"
+  FeederInput:
+    type: "object"
+    properties:
+      bitrate:
+        type: "integer"
+        format: "int32"
+      error:
+        type: "boolean"
+      name:
+        type: "string"
+  NewReceiver:
+    type: "object"
+    required:
+    - "api_password"
+    - "api_user"
+    - "name"
+    - "remote_access_key_id"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      api_user:
+        type: "string"
+      api_password:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+  SourcesReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Source"
+  ZenObject:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      lastError:
+        $ref: "#/definitions/Event"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+  RemoteAccessesReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/RemoteAccess"
+  TunnelledObject:
+    type: "object"
+    properties:
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+      tunnel_username:
+        type: "integer"
+        format: "int64"
+      tunnel:
+        $ref: "#/definitions/Tunnel"
+  ClustersReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Cluster"
+  NewRtmpTarget:
+    type: "object"
+    required:
+    - "name"
+    - "resource_tag_ids"
+    - "stream_name"
+    - "target"
+    properties:
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      target:
+        type: "string"
+        description: "RTMP URL e.g. rtmp://my.rtmp.server.com/live"
+      alt_target:
+        type: "string"
+        description: "Alternative RTMP URL e.g. rtmp://my.backup.rtmp.server.com/live"
+      stream_name:
+        type: "string"
+        description: "RTMP stream name"
+      username:
+        type: "string"
+      password:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  RtmpTargetReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/RtmpTarget"
+  PullTargetReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/PullTarget"
+  PushTarget:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        is_enabled:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "disabled'"
+        passthrough_channel_id:
+          type: "integer"
+          format: "int64"
+        target:
+          type: "string"
+        alt_target:
+          type: "string"
+        stream_id:
+          type: "string"
+        password:
+          type: "string"
+        latency:
+          type: "integer"
+        zixi_encryption_key:
+          type: "string"
+        ignore_dtls_cert:
+          type: "boolean"
+        aws_account_id:
+          type: "integer"
+          format: "int64"
+          description: "AWS MediaConnect Target - ID of AWS account in Zen"
+        mediaconnect_flow_arn:
+          type: "string"
+          description: "AWS MediaConnect Target - Flow ARN"
+        region:
+          type: "string"
+          description: "AWS MediaConnect Target - AWS region code"
+        resource_tag_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+  ReceiversReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Receiver"
+  UpdatePassThroughChannel:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      source_id:
+        type: "integer"
+        format: "int64"
+      alt_source_id:
+        type: "integer"
+        format: "int64"
+      broadcaster_cluster_id:
+        type: "integer"
+        format: "int64"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      is_enabled:
+        type: "boolean"
+  HttpTargetReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/HttpTarget"
+  Receiver:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - $ref: "#/definitions/TunnelledObject"
+    - type: "object"
+      properties:
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "pending"
+          - "disabled"
+        is_enabled:
+          type: "boolean"
+        resourceTags:
+          type: "array"
+          items:
+            $ref: "#/definitions/Tag"
+        state:
+          type: "string"
+          enum:
+          - "pending"
+          - "active"
+          - "disabled"
+        status:
+          type: "object"
+          description: "Live status of the Receiver"
+          properties:
+            cpu:
+              type: "number"
+              format: "double"
+            source_ip:
+              type: "string"
+              description: "Receiver IP address (remote IP address from the receiver\
+                \ Tunnel)"
+            outputs:
+              type: "array"
+              items:
+                $ref: "#/definitions/ReceiverOutput"
+  UpdateFeeder:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      api_user:
+        type: "string"
+      api_password:
+        type: "string"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      remote_access_key_id:
+        type: "integer"
+        format: "int64"
+  AccessKeysReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/AccessKey"
+  Role:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      resource_tag_id:
+        type: "integer"
+        format: "int64"
+      adaptive_edit:
+        type: "boolean"
+      adaptive_notify:
+        type: "boolean"
+      adaptive_view:
+        type: "boolean"
+      clusters_edit:
+        type: "boolean"
+      clusters_notify:
+        type: "boolean"
+      clusters_view:
+        type: "boolean"
+      delivery_edit:
+        type: "boolean"
+      delivery_notify:
+        type: "boolean"
+      delivery_view:
+        type: "boolean"
+      reports_edit:
+        type: "boolean"
+      reports_view:
+        type: "boolean"
+      source_edit:
+        type: "boolean"
+      source_notify:
+        type: "boolean"
+      source_view:
+        type: "boolean"
+      resourceTag:
+        $ref: "#/definitions/Tag"
+      users:
+        type: "array"
+        items:
+          $ref: "#/definitions/User"
+      groups:
+        type: "array"
+        items:
+          $ref: "#/definitions/Group"
+  UpdateTag:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+  EventsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Event"
+  RolesReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Role"
+  UpdateHttpTarget:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      name:
+        type: "string"
+      adaptive_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of an Adaptive Channel object"
+      aws_access_key_id:
+        type: "string"
+        description: "AWS Access Key ID (Required for AWS S3 targets)"
+      aws_secret_key:
+        type: "string"
+        description: "AWS Secret Key (Required for AWS S3 targets)"
+      aws_region:
+        type: "string"
+        description: "AWS Region where the bucket is located, e.g. us-east-1 (Required\
+          \ for AWS S3 targets)"
+      gcp_account_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a GCP Account object (Required for GCP targets)"
+      ingest_url:
+        type: "string"
+      playback_url:
+        type: "string"
+      delete_outdated:
+        type: "boolean"
+        description: "Delete chunks once they expire from the live playlist"
+      ignore_certificate:
+        type: "boolean"
+        description: "Ignore TLS certificate validation errors when pushing to an\
+          \ HTTPS target"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  UpdateCluster:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      name:
+        type: "string"
+      can_input:
+        type: "boolean"
+      can_process:
+        type: "boolean"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      auth_mode:
+        type: "string"
+        enum:
+        - "zen"
+        - "custom"
+        - "ffa"
+      allow_unmanaged_inputs:
+        type: "boolean"
+        default: false
+      allow_unmanaged_outputs:
+        type: "boolean"
+        default: false
+      primary_size:
+        type: "integer"
+        description: "Only for AWS clusters"
+      backup_size:
+        type: "integer"
+        description: "Only for AWS clusters"
+  MutebleObject:
+    type: "object"
+    properties:
+      muted:
+        type: "boolean"
+      muted_until:
+        type: "string"
+        format: "date-time"
+      active_mute:
+        type: "boolean"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      email:
+        type: "string"
+      is_admin:
+        type: "boolean"
+      is_enabled:
+        type: "boolean"
+      must_reset:
+        type: "boolean"
+        description: "Only for non-SSO Users"
+      sso_id:
+        type: "string"
+      roles:
+        type: "array"
+        items:
+          $ref: "#/definitions/Role"
+      groups:
+        type: "array"
+        items:
+          $ref: "#/definitions/Group"
+  Source:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        allow_outputs:
+          type: "boolean"
+        outputs_password:
+          type: "string"
+        encryption:
+          type: "string"
+        encryption_key:
+          type: "string"
+        latency:
+          type: "integer"
+        max_bitrate:
+          type: "integer"
+        monitor_pids_change:
+          type: "boolean"
+        preview_url:
+          type: "string"
+        target_host:
+          type: "string"
+        stream_id:
+          type: "string"
+        password:
+          type: "string"
+        warning:
+          type: "string"
+        broadcaster_cluster_id:
+          type: "integer"
+          format: "int64"
+        target_broadcaster_id:
+          type: "integer"
+          format: "int64"
+        broadcaster_id:
+          type: "integer"
+          format: "int64"
+        feeder_id:
+          type: "integer"
+          format: "int64"
+        input_id:
+          type: "string"
+        protocol:
+          type: "string"
+        multicast_address:
+          type: "string"
+        multicast_source:
+          type: "string"
+        listening_port:
+          type: "integer"
+        input_nic:
+          type: "string"
+        hitless_failover_source_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+        source_id:
+          type: "integer"
+          format: "int64"
+          description: "Inter-Cluster Source - ID of the source that will be pulled\
+            \ by the target cluster"
+        use_private_ip:
+          type: "boolean"
+          description: "Inter-Cluster Source - Set to true to pull the Source on the\
+            \ broadcaster's private IP address"
+        aws_account_id:
+          type: "integer"
+          format: "int64"
+          description: "AWS MediaConnect Source - ID of AWS account in Zen"
+        mediaconnect_flow_arn:
+          type: "string"
+          description: "AWS MediaConnect Source - Flow ARN"
+        region:
+          type: "string"
+          description: "AWS MediaConnect Source - AWS region code"
+        type:
+          type: "string"
+        monitor_only:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "pending"
+          - "disabled"
+        is_enabled:
+          type: "boolean"
+        socket_buffer:
+          type: "integer"
+          format: "int64"
+          description: "Controls the socket size allocated for managed inputs (Zixi\
+            \ Pull, Inter-Cluster) [bytes]"
+        disable_autopull:
+          type: "boolean"
+          description: "Locks Channels and Targets to the current active broadcaster\
+            \ for this Source"
+        autopull_latency:
+          type: "integer"
+        webrtc_mode:
+          type: "string"
+          description: "One of 'passthrough', 'auto', '1080p', '720p', '480p', '360p'\
+            \ or blank to disable"
+        audio_ref_level:
+          type: "integer"
+          description: "Adjust audio reference level for NDI Sources [dB]"
+        process_scte_reports:
+          type: "boolean"
+          description: "Controls whether SCTE messages reported by the broadcaster\
+            \ are parsed into ZM SCTE logs"
+        report_scte_warnings:
+          type: "boolean"
+          description: "Controls whether ZM will alert on missing or duplicate SCTE\
+            \ messages (requires process_scte_reports)"
+        resourceTags:
+          type: "array"
+          items:
+            $ref: "#/definitions/Tag"
+        state:
+          type: "string"
+          enum:
+          - "pending"
+          - "active"
+          - "disabled"
+        status:
+          type: "object"
+          description: "Live status of the Source"
+          properties:
+            dtls:
+              type: "boolean"
+            dtls_cert:
+              type: "string"
+            encrypted:
+              type: "boolean"
+            online:
+              type: "boolean"
+            up_time:
+              type: "integer"
+            bitrate:
+              type: "number"
+              format: "double"
+              description: "Network bitrate"
+            source_ip:
+              type: "string"
+              description: "IP address or other source description for local sources"
+            tr101:
+              type: "object"
+              properties:
+                bitrate:
+                  type: "integer"
+                  description: "Data bitrate"
+                errors:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      name:
+                        type: "string"
+                      description:
+                        type: "string"
+                      time:
+                        type: "string"
+                      p1:
+                        type: "boolean"
+                      count:
+                        type: "integer"
+                      value:
+                        type: "integer"
+                      pid:
+                        type: "integer"
+                pcrs:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      OjDev:
+                        type: "number"
+                        format: "double"
+                      OjMax:
+                        type: "number"
+                        format: "double"
+                      accuracy:
+                        type: "number"
+                        format: "double"
+                      delay:
+                        type: "number"
+                        format: "double"
+                      deviation:
+                        type: "number"
+                        format: "double"
+                      bitrate:
+                        type: "integer"
+                      pid:
+                        type: "integer"
+                programs:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      epids:
+                        type: "array"
+                        items:
+                          type: "object"
+                          properties:
+                            CC_errors:
+                              type: "integer"
+                            FPS:
+                              type: "number"
+                              format: "double"
+                            average_bitrate:
+                              type: "integer"
+                            min_bitrate:
+                              type: "integer"
+                            max_bitrate:
+                              type: "integer"
+                            packets:
+                              type: "integer"
+                              format: "int64"
+                            bytes:
+                              type: "integer"
+                              format: "int64"
+                            pid:
+                              type: "integer"
+                            scrambled:
+                              type: "integer"
+                            stream_id:
+                              type: "integer"
+                            height:
+                              type: "integer"
+                            width:
+                              type: "integer"
+                            good_frames:
+                              type: "integer"
+                            good_gop_frames:
+                              type: "integer"
+                            type:
+                              type: "string"
+                            sample_rate:
+                              type: "integer"
+                      general:
+                        type: "object"
+                        properties:
+                          number:
+                            type: "integer"
+                          pcr_pid:
+                            type: "integer"
+                          pmt_pid:
+                            type: "integer"
+                      pmt_pid:
+                        type: "object"
+                        properties:
+                          CC_errors:
+                            type: "integer"
+                          average_bitrate:
+                            type: "integer"
+                          min_bitrate:
+                            type: "integer"
+                          max_bitrate:
+                            type: "integer"
+                          packets:
+                            type: "integer"
+                            format: "int64"
+                          bytes:
+                            type: "integer"
+                            format: "int64"
+                          pid:
+                            type: "integer"
+                          scrambled:
+                            type: "integer"
+                          stream_id:
+                            type: "integer"
+                          type:
+                            type: "string"
+                status:
+                  type: "object"
+                  properties:
+                    p1_ok:
+                      type: "boolean"
+                    p2_ok:
+                      type: "boolean"
+                transport:
+                  type: "object"
+                  properties:
+                    null_pid:
+                      type: "object"
+                      properties:
+                        CC_errors:
+                          type: "integer"
+                        average_bitrate:
+                          type: "integer"
+                        min_bitrate:
+                          type: "integer"
+                        max_bitrate:
+                          type: "integer"
+                        packets:
+                          type: "integer"
+                          format: "int64"
+                        bytes:
+                          type: "integer"
+                          format: "int64"
+                        pid:
+                          type: "integer"
+                        scrambled:
+                          type: "integer"
+                        stream_id:
+                          type: "integer"
+                        type:
+                          type: "string"
+                    pat:
+                      type: "object"
+                      properties:
+                        CC_errors:
+                          type: "integer"
+                        average_bitrate:
+                          type: "integer"
+                        min_bitrate:
+                          type: "integer"
+                        max_bitrate:
+                          type: "integer"
+                        packets:
+                          type: "integer"
+                          format: "int64"
+                        bytes:
+                          type: "integer"
+                          format: "int64"
+                        pid:
+                          type: "integer"
+                        scrambled:
+                          type: "integer"
+                        stream_id:
+                          type: "integer"
+                        type:
+                          type: "string"
+  TunnelServer:
+    type: "object"
+    properties:
+      dns_prefix:
+        type: "string"
+  SourceReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Source"
+  UpdateRole:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      resource_tag_id:
+        type: "integer"
+        format: "int64"
+      adaptive_edit:
+        type: "boolean"
+      adaptive_notify:
+        type: "boolean"
+      adaptive_view:
+        type: "boolean"
+      clusters_edit:
+        type: "boolean"
+      clusters_notify:
+        type: "boolean"
+      clusters_view:
+        type: "boolean"
+      delivery_edit:
+        type: "boolean"
+      delivery_notify:
+        type: "boolean"
+      delivery_view:
+        type: "boolean"
+      reports_edit:
+        type: "boolean"
+      reports_view:
+        type: "boolean"
+      source_edit:
+        type: "boolean"
+      source_notify:
+        type: "boolean"
+      source_view:
+        type: "boolean"
+      user_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      group_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  ReceiverOutput:
+    type: "object"
+    properties:
+      bitrate:
+        type: "integer"
+        format: "int32"
+      error:
+        type: "boolean"
+      name:
+        type: "string"
+      type:
+        type: "string"
+      target:
+        type: "string"
+  AdaptiveChannelsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/AdaptiveChannel"
+  Feeder:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - $ref: "#/definitions/TunnelledObject"
+    - type: "object"
+      properties:
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "pending"
+          - "disabled"
+        is_enabled:
+          type: "boolean"
+        resourceTags:
+          type: "array"
+          items:
+            $ref: "#/definitions/Tag"
+        state:
+          type: "string"
+          enum:
+          - "pending"
+          - "active"
+          - "disabled"
+        status:
+          type: "object"
+          description: "Live status of the Feeder"
+          properties:
+            cpu:
+              type: "number"
+              format: "double"
+            ram:
+              type: "number"
+              format: "double"
+            source_ip:
+              type: "string"
+              description: "Feeder IP address (remote IP address from the feeder Tunnel)"
+            inputs:
+              type: "array"
+              items:
+                $ref: "#/definitions/FeederInput"
+  NewNdiTarget:
+    type: "object"
+    required:
+    - "name"
+    - "resource_tag_ids"
+    properties:
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  BroadcasterReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/Broadcaster"
+  NdiTarget:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        is_enabled:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "disabled'"
+        passthrough_channel_id:
+          type: "integer"
+          format: "int64"
+        resource_tag_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+  BroadcasterOutput:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      error_string:
+        type: "boolean"
+      stream_id:
+        type: "string"
+      type:
+        type: "string"
+  UpdateNdiTarget:
+    type: "object"
+    properties:
+      is_enabled:
+        type: "boolean"
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  Cluster:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        dns_prefix:
+          type: "string"
+        auth_mode:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+        allow_unmanaged_inputs:
+          type: "boolean"
+        allow_unmanaged_outputs:
+          type: "boolean"
+        can_input:
+          type: "boolean"
+        can_process:
+          type: "boolean"
+        is_auto_scaling:
+          type: "boolean"
+        aws_account_id:
+          type: "integer"
+          format: "int64"
+        eips:
+          type: "string"
+        instance_type:
+          type: "string"
+        key_pair:
+          type: "string"
+        primary_size:
+          type: "integer"
+        backup_size:
+          type: "integer"
+        region:
+          type: "string"
+        security_group:
+          type: "string"
+        subnet:
+          type: "string"
+        zcp_version_id:
+          type: "integer"
+        zcp_version_name:
+          type: "string"
+        vpc:
+          type: "string"
+        http_streaming_port:
+          type: "integer"
+          format: "int16"
+        inputs_port:
+          type: "integer"
+          format: "int16"
+        outputs_port:
+          type: "integer"
+          format: "int16"
+        broadcastersSummary:
+          type: "object"
+          description: "Brodacasters general status summary"
+          properties:
+            aws_pending:
+              type: "integer"
+            pending:
+              type: "integer"
+            good:
+              type: "integer"
+            bad:
+              type: "integer"
+            disabled:
+              type: "integer"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+        resourceTags:
+          type: "array"
+          items:
+            $ref: "#/definitions/Tag"
+        broadcaster_version:
+          $ref: "#/definitions/BroadcasterVersion"
+        broadcaster_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+  AccessKeyReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        $ref: "#/definitions/AccessKey"
+  PullTargetsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/PullTarget"
+  AwsAccountsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/AwsAccount"
+  GcpAccountsReply:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/GcpAccount"
+  NewPushTarget:
+    type: "object"
+    required:
+    - "latency"
+    - "name"
+    - "resource_tag_ids"
+    - "stream_id"
+    - "target"
+    properties:
+      name:
+        type: "string"
+      passthrough_channel_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of a Pass-Through Channel object"
+      target:
+        type: "string"
+        description: "Zixi broadcaster host and port e.g. my.zixi.server.com[:2088]"
+      alt_target:
+        type: "string"
+        description: "Alternative Zixi broadcaster host and port e.g. my.zixi.server.com[:2088]"
+      stream_id:
+        type: "string"
+        description: "Stream ID that the remote broadcaster is configured to accept\
+          \ for this Target"
+      password:
+        type: "string"
+      latency:
+        type: "integer"
+      zixi_encryption_key:
+        type: "string"
+        description: "Hexadecimal string of length 32, 48 or 64 characters (Not supported\
+          \ for AWS MediaConnect Target mode)"
+      ignore_dtls_cert:
+        type: "boolean"
+      aws_account_id:
+        type: "integer"
+        format: "int64"
+        description: "AWS MediaConnect Target - ID of AWS account in Zen"
+      mediaconnect_flow_arn:
+        type: "string"
+        description: "AWS MediaConnect Target - Flow ARN"
+      region:
+        type: "string"
+        description: "AWS MediaConnect Target - AWS region code"
+      resource_tag_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+  UdpRtpTarget:
+    allOf:
+    - $ref: "#/definitions/ZenObject"
+    - $ref: "#/definitions/MutebleObject"
+    - type: "object"
+      properties:
+        is_enabled:
+          type: "boolean"
+        generalStatus:
+          type: "string"
+          enum:
+          - "good"
+          - "bad"
+          - "disabled'"
+        passthrough_channel_id:
+          type: "integer"
+          format: "int64"
+        host:
+          type: "string"
+        rtp:
+          type: "boolean"
+        resource_tag_ids:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int64"
+  GcpAccount:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+  UpdateGroup:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      role_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      user_ids:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
